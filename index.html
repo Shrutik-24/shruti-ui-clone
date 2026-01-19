@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Spotify UI Clone</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(180deg, #2f2b45, #121212);
+    color: white;
+}
+
+.app {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 220px;
+    background: rgba(0,0,0,0.75);
+    padding: 25px;
+    backdrop-filter: blur(6px);
+}
+
+.sidebar h2 {
+    color: #1db954;
+}
+
+.sidebar li {
+    list-style: none;
+    margin: 18px 0;
+    color: #cfcfcf;
+    cursor: pointer;
+}
+
+.sidebar li:hover {
+    color: white;
+}
+
+.main {
+    flex: 1;
+    padding: 30px;
+}
+
+h2 {
+    margin: 35px 0 18px;
+    font-size: 22px;
+}
+
+.songs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.song-card {
+    background: #181818;
+    border-radius: 16px;
+    padding: 18px;
+    height: 155px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: 0.25s;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+.love { background: linear-gradient(160deg, #3a1f2b, #181818); }
+.motivation { background: linear-gradient(160deg, #3a331a, #181818); }
+.chill { background: linear-gradient(160deg, #1e3340, #181818); }
+.party { background: linear-gradient(160deg, #2c1e3a, #181818); }
+
+.song-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(29,185,84,0.15);
+}
+
+.play-btn {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background: #1db954;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-size: 18px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: 0.25s;
+}
+
+.song-card:hover .play-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.song-card h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.song-card p {
+    margin-top: 6px;
+    font-size: 13px;
+    color: #cfcfcf;
+}
+
+.now-playing {
+    border-left: 4px solid #1db954;
+    background: linear-gradient(90deg, rgba(29,185,84,0.25), rgba(24,24,24,0.95));
+    box-shadow: 0 0 20px rgba(29,185,84,0.6);
+    animation: pulse 2.2s infinite;
+}
+
+.now-playing h4 {
+    color: #1db954;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 10px rgba(29,185,84,0.4); }
+    50% { box-shadow: 0 0 25px rgba(29,185,84,0.8); }
+    100% { box-shadow: 0 0 10px rgba(29,185,84,0.4); }
+}
+
+.player {
+    position: fixed;
+    bottom: 0;
+    height: 80px;
+    width: 100%;
+    background: linear-gradient(90deg, #181818, #1db95433, #181818);
+    background-size: 200% 100%;
+    animation: playerGlow 5s linear infinite;
+    border-top: 1px solid #2a2a2a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+@keyframes playerGlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+.player span {
+    font-size: 14px;
+}
+
+.player span:first-child {
+    color: #1db954;
+    font-weight: bold;
+}
+
+.player small {
+    color: #b3b3b3;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<div class="sidebar">
+    <h2>Spotify</h2>
+    <li>Home</li>
+    <li>Search</li>
+    <li>Your Library</li>
+</div>
+
+<div class="main">
+
+<h2>💖 Love Songs</h2>
+<div class="songs">
+    <div class="song-card love now-playing"><div class="play-btn">▶</div><h4>Perfect</h4><p>Ed Sheeran</p></div>
+    <div class="song-card love"><div class="play-btn">▶</div><h4>Shape of You</h4><p>Ed Sheeran</p></div>
+    <div class="song-card love"><div class="play-btn">▶</div><h4>Until I Found You</h4><p>Stephen Sanchez</p></div>
+    <div class="song-card love"><div class="play-btn">▶</div><h4>Love Story</h4><p>Taylor Swift</p></div>
+    <div class="song-card love"><div class="play-btn">▶</div><h4>Middle of the Night</h4><p>Elley Duhé</p></div>
+    <div class="song-card love"><div class="play-btn">▶</div><h4>Señorita</h4><p>Shawn Mendes</p></div>
+</div>
+
+<h2>🔥 Motivation / Power Songs</h2>
+<div class="songs">
+    <div class="song-card motivation"><div class="play-btn">▶</div><h4>Believer</h4><p>Imagine Dragons</p></div>
+    <div class="song-card motivation"><div class="play-btn">▶</div><h4>Hall of Fame</h4><p>The Script</p></div>
+    <div class="song-card motivation"><div class="play-btn">▶</div><h4>Unstoppable</h4><p>Sia</p></div>
+    <div class="song-card motivation"><div class="play-btn">▶</div><h4>Titanium</h4><p>David Guetta</p></div>
+</div>
+
+<h2>😌 Relaxed / Chill Songs</h2>
+<div class="songs">
+    <div class="song-card chill"><div class="play-btn">▶</div><h4>Lean On</h4><p>Major Lazer</p></div>
+    <div class="song-card chill"><div class="play-btn">▶</div><h4>Havana</h4><p>Camila Cabello</p></div>
+    <div class="song-card chill"><div class="play-btn">▶</div><h4>Cheap Thrills</h4><p>Sia</p></div>
+    <div class="song-card chill"><div class="play-btn">▶</div><h4>Levitating</h4><p>Dua Lipa</p></div>
+</div>
+
+<h2>💃 Party / Energetic Songs</h2>
+<div class="songs">
+    <div class="song-card party"><div class="play-btn">▶</div><h4>New Rules</h4><p>Dua Lipa</p></div>
+    <div class="song-card party"><div class="play-btn">▶</div><h4>Don’t Start Now</h4><p>Dua Lipa</p></div>
+    <div class="song-card party"><div class="play-btn">▶</div><h4>Uptown Funk</h4><p>Bruno Mars</p></div>
+    <div class="song-card party"><div class="play-btn">▶</div><h4>Desi Girl</h4><p>Shankar Mahadevan</p></div>
+    <div class="song-card party"><div class="play-btn">▶</div><h4>Taki Taki</h4><p>DJ Snake</p></div>
+</div>
+
+</div>
+</div>
+
+<div class="player">
+    <div>
+        <span>Perfect</span><br>
+        <small>Ed Sheeran</small>
+    </div>
+    <span>⏮ ⏯ ⏭</span>
+    <small>1:32 / 4:23</small>
+</div>
+
+</body>
+</html>
